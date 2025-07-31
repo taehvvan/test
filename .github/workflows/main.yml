@@ -5,14 +5,30 @@ on:
     branches: [ main ]
 
 jobs:
-  write-file:
+  build-java:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Create output file
-      run: |
-        echo "Hello, GitHub Actions!"
+    - name: Compile Main.java
+        run: |
+          javac Main.java
+          ls -l
+
+      - name: Check if Main.class was created
+        run: |
+          if [ -f Main.class ]; then
+            echo "✅ Compilation successful: Main.class created."
+          else
+            echo "❌ Compilation failed: Main.class not found."
+            exit 1
+          fi
+
+      - name: Upload Main.class as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-class
+          path: Main.class
 
