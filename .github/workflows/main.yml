@@ -27,7 +27,7 @@ jobs:
           fi
 
       - name: Upload Main.class as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: compiled-class
           path: Main.class
