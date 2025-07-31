@@ -1,4 +1,4 @@
-name: java file upload
+name: upload java file
 
 on:
   push:
