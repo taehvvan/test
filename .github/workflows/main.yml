@@ -1,4 +1,4 @@
-name: Simple File Output
+name: java file upload
 
 on:
   push:
@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Compile Main.java
+      - name: Compile Main.java
         run: |
           javac Main.java
           ls -l
@@ -27,8 +27,7 @@ jobs:
           fi
 
       - name: Upload Main.class as artifact
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v3
         with:
           name: compiled-class
           path: Main.class
-
